@@ -41,6 +41,6 @@
               enableIntelX86Extensions = isIntelX86Platform;
             };
           };
+        override = nixpkgs.callPackage ./default.nix;
       };
-      override = pkgs.callPackage ./default.nix;
 }
