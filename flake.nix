@@ -44,11 +44,11 @@
         overlays.override = args: final: _:
           let isIntelX86Platform = final.system == "x86_64-linux";
           in {
-            nixgl = import ./default.nix {
+            nixgl = import ./default.nix ({
               pkgs = final;
               enable32bits = isIntelX86Platform;
               enableIntelX86Extensions = isIntelX86Platform;
-            } // args;
+            } // args);
           };
       };
 }
