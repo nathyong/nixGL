@@ -42,4 +42,5 @@
             };
           };
       };
+      override = nixpkgs.callPackage ./default.nix;
 }
