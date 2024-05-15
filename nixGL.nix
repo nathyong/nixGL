@@ -1,9 +1,9 @@
 { # # Nvidia informations.
 # Version of the system kernel module. Let it to null to enable auto-detection.
-nvidiaVersion ? null,
+nvidiaVersion,
 # Hash of the Nvidia driver .run file. null is fine, but fixing a value here
 # will be more reproducible and more efficient.
-nvidiaHash ? null,
+nvidiaHash,
 # Alternatively, you can pass a path that points to a nvidia version file
 # and let nixGL extract the version from it. That file must be a copy of
 # /proc/driver/nvidia/version. Nix doesn't like zero-sized files (see
@@ -67,7 +67,7 @@ let
     It contains the builder for different nvidia configuration, parametrized by
     the version of the driver and sha256 sum of the driver installer file.
     */
-    nvidiaPackages = { version, sha256 ? null }: rec {
+    nvidiaPackages = { version, sha256 }: rec {
       nvidiaDrivers = (linuxPackages.nvidia_x11.override { }).overrideAttrs
         (oldAttrs: rec {
           pname = "nvidia";
